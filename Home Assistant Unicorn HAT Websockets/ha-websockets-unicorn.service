@@ -1,0 +1,12 @@
+[Unit]
+Description=Connect to Home Assistant via websockets and display values on Unicorn HAT
+After=network.target
+
+[Service]
+ExecStart=/usr/local/bin/python3.11 ha-websockets-unicorn.py
+WorkingDirectory=/home/pi/ha-websockets-unicorn
+Restart=always
+User=root
+
+[Install]
+WantedBy=multi-user.target

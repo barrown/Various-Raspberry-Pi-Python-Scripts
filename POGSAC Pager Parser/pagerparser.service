@@ -1,0 +1,11 @@
+[Unit]
+Description=Launch bash script to start rtl_fm, multimon-ng, and the python parser
+
+[Service]
+ExecStart=/home/pi/pagers/rtl-multimon-pager-capture.sh
+WorkingDirectory=/home/pi/pagers
+Restart=always
+User=pi
+
+[Install]
+WantedBy=multi-user.target

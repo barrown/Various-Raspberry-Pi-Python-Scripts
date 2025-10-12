@@ -1,0 +1,11 @@
+[Unit]
+Description=Strava Marathon Tracker for Inky pHat
+After=multi-user.target
+
+[Service]
+User=pi
+ExecStart=/usr/bin/python3 -u /home/pi/marathon/stravamarathontracker.py
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
