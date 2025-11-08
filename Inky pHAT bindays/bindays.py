@@ -38,7 +38,7 @@ adapter = HTTPAdapter(max_retries=retries)
 http = requests.Session()
 http.mount("http://", adapter)
 
-headers = {"Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI0MTJjYzRmYzgyOTM0NGEwYTE1ZTdkZThlNjRlNDg0ZiIsImlhdCI6MTY4MDIwMTY0NSwiZXhwIjoxOTk1NTYxNjQ1fQ.6ejS7t8S7be-5rWbITPLKTQaCfqyOYQab5jEetzNTtU",
+headers = {"Authorization": "Bearer YOUR-TOKEN-HERE",
            "content-type": "application/json"}
 
 bindaystring = ''
@@ -148,5 +148,6 @@ while True:
 
         inky_display.set_image(img)
         inky_display.show()
+
 
         sleep(3600)
