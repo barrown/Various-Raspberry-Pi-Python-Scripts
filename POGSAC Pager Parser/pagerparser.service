@@ -1,10 +1,12 @@
 [Unit]
-Description=Launch bash script to start rtl_fm, multimon-ng, and the python parser
+Description=Launch bash shell to start rtl_fm, multimon-ng, and the python parser
 
 [Service]
-ExecStart=/home/pi/pagers/rtl-multimon-pager-capture.sh
+ExecStart=/bin/bash -c 'set -eo pipefail; /bin/rtl_fm -f 153340000 -s 22050 | /usr/local/bin/multimon-ng -t raw -a POCSAG512 -a POCSAG1200 -a POCSAG2400 -f alpha --timestamp /dev/stdin | /bin/python3 /home/pi/pagers/pager_pipe_parser.py'
 WorkingDirectory=/home/pi/pagers
 Restart=always
+RestartSec=5s
+KillMode=control-group
 User=pi
 
 [Install]

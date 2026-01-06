@@ -1,11 +1,12 @@
 #! python3
-# v1.6
+# v1.7
 
 # set up a list of strings to ignore, made into lowercase
-IGNORED_WORDS_LIST = ["animal name", "temperature alert", " fire call", "this offer expires", "test message", "test call", "testing", "test test", "+++time=", " pony ", " bitch ", " ewe ", " lamb "]
+IGNORED_WORDS_LIST = ["animal name", "temperature alert", "northallerton fire call", "this offer expires", "test message", "test call", "testing", "test test", "+++time=", " pony ", " bitch ", " ewe ", " lamb "]
 
 # to be able to read in the piped line from multimon-ng
-from sys import stdin 
+from sys import stdin
+from sys import exit
 
 # send webhook to home assistant
 from requests import post
@@ -62,8 +63,8 @@ try:
             if len(message) < 60:
                 continue
             
-            # remove junk messages that typically contain a bunch of asterisks
-            if message.count('*') > 16:
+            # remove junk messages that typically contain a bunch of asterisks or no spaces
+            if message.count('*') > 16 or message.count(' ') < 3:
                 continue
             
             # ignore messages containing certain watchwords
@@ -134,10 +135,14 @@ try:
             del message_log_list[0]
             message_log_list.append(message[20:])
 
-except:
+except BaseException as e:
     con.close()
-    print("We got an error or asked to stop... connection to database closed.")
+    print(f"Python: We got an error or asked to stop... connection to database closed. Error: {e}")
+    exit(1)
 
+
+
+# SELECT MAX(datetime),message FROM pager;
 
 ####
 # CREATE VIRTUAL TABLE pager USING fts5(datetime UNINDEXED, message, postcode UNINDEXED, age UNINDEXED, ismale UNINDEXED, tokenize = 'ascii');
