@@ -22,6 +22,7 @@ To provide diffusion and separate out the different LEDs I made a stand-off from
 Using a Black/Red/White [eInk display]([url](https://shop.pimoroni.com/products/inky-phat?variant=55694721057147)) on a Raspberry Pi Zero W in a [transparent case]([url](https://thepihut.com/products/abs-transparent-case-for-raspberry-pi-zero-zero-w)) I get a daily update of how many days until a bin collection, either recycling or rubbish.
 
 ![Bin days](https://github.com/barrown/Various-Raspberry-Pi-Python-Scripts/blob/main/Inky%20pHAT%20bindays/bindays.jpg)
+![Bin days](https://github.com/barrown/Various-Raspberry-Pi-Python-Scripts/blob/main/Inky%20pHAT%20bindays/bindays2.jpg)
 
 Every hour the script checks Home Assistant for the latest status on the waste collection calendar, which is taken directly from the council website. Using the PIL library, some text is overlaid on an image and displayed on the eInk screen.
 
@@ -71,3 +72,10 @@ A 4x8 [Unicorn pHAT]([url](https://learn.pimoroni.com/article/getting-started-wi
 ![pHAT solar](https://github.com/barrown/Various-Raspberry-Pi-Python-Scripts/blob/main/Unicorn%20pHAT%20Solar%20Display%20from%20Home%20Assistant/phatsolar.jpg)
 
 If I was redesigning this I'd have it all as one script with some async functions, and not polling Home Assistant but using the websockets connection.
+
+
+
+## Tarot card display on 4-colour e-Ink
+A 400x300 4-colour [inky wHAT](https://shop.pimoroni.com/products/inky-what?variant=55696156885371) connected via ribbon cable to a Raspberry Pi 5. Each day two random cards from the major arcana are chosen and some pre-generated interpretations from gen AI are displayed, along with the two cards in pixel art form.
+
+![Tarot display](https://github.com/barrown/Various-Raspberry-Pi-Python-Scripts/blob/main/Tarot%20e-ink/2026-01-05%2012.29.jpg)
